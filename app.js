@@ -6,6 +6,13 @@ const itemList = document.getElementById("item-list");
 const itemFilter = document.getElementById("filter");
 const clearBtn = document.getElementById("clear");
 
+function displayItems() {
+  const itemsFromStorage = getItemsFromStorage();
+  itemsFromStorage.forEach((item) => addItemToDom(item));
+
+  checkItems();
+}
+
 // Add item
 function addItemOnSubmit(e) {
   e.preventDefault();
@@ -40,23 +47,6 @@ function addItemToDom(items) {
   itemList.appendChild(li);
 }
 
-function addItemToStorage(item) {
-  let itemsFromStorage;
-
-  // Checking to see if there any items in storage
-  if (localStorage.getItem("items") === null) {
-    itemsFromStorage = []; //if isn't then set variable to an array
-  } else {
-    itemsFromStorage = JSON.parse(localStorage.getItem("items")); //if is then parse it into variable
-  }
-
-  // Add new item to an array
-  itemsFromStorage.push(item);
-
-  // Convert to JSON string and set to localStorage
-  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
-}
-
 function createButton(classes) {
   const button = document.createElement("button");
   button.className = classes;
@@ -69,6 +59,29 @@ function createIcon(classes) {
   const icon = document.createElement("i");
   icon.className = classes;
   return icon;
+}
+
+function addItemToStorage(item) {
+  const itemsFromStorage = getItemsFromStorage();
+
+  // Add new item to an array
+  itemsFromStorage.push(item);
+
+  // Convert to JSON string and set to localStorage
+  localStorage.setItem("items", JSON.stringify(itemsFromStorage));
+}
+
+function getItemsFromStorage(params) {
+  let itemsFromStorage;
+
+  // Checking to see if there any items in storage
+  if (localStorage.getItem("items") === null) {
+    itemsFromStorage = []; //if isn't then set variable to an array
+  } else {
+    itemsFromStorage = JSON.parse(localStorage.getItem("items")); //if is then parse it into variable
+  }
+
+  return itemsFromStorage;
 }
 
 // Remove Item
@@ -121,10 +134,16 @@ function checkItems() {
   }
 }
 
-// Event Listeners
-itemForm.addEventListener("submit", addItemOnSubmit);
-itemList.addEventListener("click", removeItem);
-clearBtn.addEventListener("click", clearItems);
-itemFilter.addEventListener("input", filterItems);
+// Initialize
+function init() {
+  // Event Listeners
+  itemForm.addEventListener("submit", addItemOnSubmit);
+  itemList.addEventListener("click", removeItem);
+  clearBtn.addEventListener("click", clearItems);
+  itemFilter.addEventListener("input", filterItems);
+  document.addEventListener("DOMContentLoaded", displayItems);
 
-checkItems();
+  checkItems();
+}
+
+init();
