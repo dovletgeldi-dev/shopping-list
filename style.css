@@ -44,6 +44,10 @@ header {
   outline: none;
 }
 
+.form-input:focus {
+  border: 1px solid black;
+}
+
 .form-input-filter {
   font-size: 16px;
 
@@ -56,6 +60,10 @@ header {
   outline: none;
 }
 
+.form-input-filter:focus {
+  border-bottom: 1px solid black;
+}
+
 /* Buttons */
 .btn {
   font-size: 16px;
@@ -66,10 +74,6 @@ header {
   border-radius: 5px;
   padding: 0.5rem 1rem;
   cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #4d4d4d;
 }
 
 .btn-link {
@@ -118,4 +122,8 @@ header {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 0.5rem 0.75rem;
+}
+
+.items li:hover {
+  border: 1px solid green;
 }
