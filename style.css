@@ -28,6 +28,10 @@ header {
   padding: 1rem;
 }
 
+.edit-mode {
+  color: gray;
+}
+
 /* Form and Input */
 .form-input {
   font-size: 16px;
