@@ -2,6 +2,8 @@
 
 Simple shopping list project that built with HTML, CSS and Vanilla JavaScript
 
+<img src="images/app.jpeg" width="500">
+
 ## Project Specs
 
 - Add items to the list via the form
