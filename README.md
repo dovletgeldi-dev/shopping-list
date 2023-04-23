@@ -15,4 +15,4 @@ Simple shopping list project that built with HTML, CSS and Vanilla JavaScript
 
 ## Live Preview
 
--[Live-Site](https://capable-rabanadas-1c6008.netlify.app/)
+[Live-Site](https://capable-rabanadas-1c6008.netlify.app/)
